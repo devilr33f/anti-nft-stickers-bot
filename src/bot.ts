@@ -19,6 +19,6 @@ bot.on('message', async (context) => {
     if (!(admins instanceof TelegramError) && admins.find((admin) => admin.user.id === context.senderId)) return
 
     if (config.shouldSendWarning) await context.reply('No NFT stickers there!')
-    context.delete()
+    context.delete().catch(() => {})
   }
 })
